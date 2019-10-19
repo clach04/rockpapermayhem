@@ -7,10 +7,36 @@ const scissors = 'scissors';
 const player1 = 'player1';
 const player2 = 'player2';
 const draw = 'draw';
+var counter;
 
-
-function countdownTimerQuickAndDirty(){
+// set keys and start countdown timer; calls display keys to display keys when
+// timer hits 0
+function countdownTimer(){
   var keys = generate_keys();
+  var i = 3;
+  counter = setInterval(
+    function(){
+      setTimerValue(i);
+      i = i - 1;
+      if(i < 0){
+        clearCounter();
+        displayKeys(keys);
+      }
+    }, 1000
+
+  )
+}
+
+function setTimerValue(value){
+  $("#countdown-timer-value").text(value);
+}
+
+function clearCounter(){
+  counter = clearInterval(counter);
+}
+
+function displayKeys(keys){
+
   $("#p1-rock-keys").text(keys['player1']['rock']);
   $("#p2-rock-keys").text(keys['player2']['rock']);
   $("#p1-scissors-keys").text(keys['player1']['scissors']);
@@ -18,8 +44,6 @@ function countdownTimerQuickAndDirty(){
   $("#p1-paper-keys").text(keys['player1']['paper']);
   $("#p2-paper-keys").text(keys['player2']['paper']);
 }
-
-// Calculates who the winner is; returns draw, player 1, player 2
 function winner(player1_move, player2_move) {
       // Result is one of: 'draw', player1, player2
       switch (player1_move) {
@@ -172,10 +196,6 @@ document.onkeydown = function (evt) {
       console.log("KEYDOWN DETECTED")
 
 };
-
-document.onload = function(){
-  console.log('test')
-}
 
 // Remove keys from active array whenever the key is released
 
