@@ -7,7 +7,43 @@ const scissors = 'scissors';
 const player1 = 'player1';
 const player2 = 'player2';
 const draw = 'draw';
+var counter;
 
+// set keys and start countdown timer; calls display keys to display keys when
+// timer hits 0
+function countdownTimer(){
+  var keys = generate_keys();
+  var i = 3;
+  counter = setInterval(
+    function(){
+      setTimerValue(i);
+      i = i - 1;
+      if(i < 0){
+        clearCounter();
+        displayKeys(keys);
+      }
+    }, 1000
+
+  )
+}
+
+function setTimerValue(value){
+  $("#countdown-timer-value").text(value);
+}
+
+function clearCounter(){
+  counter = clearInterval(counter);
+}
+
+function displayKeys(keys){
+
+  $("#p1-rock-keys").text(keys['player1']['rock']);
+  $("#p2-rock-keys").text(keys['player2']['rock']);
+  $("#p1-scissors-keys").text(keys['player1']['scissors']);
+  $("#p2-scissors-keys").text(keys['player2']['scissors']);
+  $("#p1-paper-keys").text(keys['player1']['paper']);
+  $("#p2-paper-keys").text(keys['player2']['paper']);
+}
 function winner(player1_move, player2_move) {
       // Result is one of: 'draw', player1, player2
       switch (player1_move) {
@@ -49,8 +85,8 @@ function generate_keys() {
       // Version 1 :-)
       var result = {
             'player1': {
-                  rock: ['b'],
-                  paper: ['n'],
+                  rock: ['b','g'],
+                  paper: ['n','h'],
                   scissors: ['m'],
                   "result": null
             },
@@ -75,7 +111,7 @@ playerData = generate_keys()
 
 function checkOnePair(arr, keysPressed) {
 
-      console.log("Checking Array: " + arr)
+      // console.log("Checking Array: " + arr)
 
       var allMatchesTrue = true
 
@@ -103,66 +139,81 @@ function checkIfResultWasFound(playerData, activeKeys) {
 
       console.log(playerData)
 
+      playerData["player1"]["result"] = null
+      playerData["player2"]["result"] = null
+
       if (checkOnePair(playerData["player1"]["rock"], activeKeys) == true) {
             playerData["player1"]["result"] = "rock"
-            // alert("Player 1 has chosen Rock")
-            // return true
       }
 
       if (checkOnePair(playerData["player1"]["paper"], activeKeys) == true) {
             playerData["player1"]["result"] = "paper"
-            // alert("Player 1 has chosen Paper")
-            // return true
       }
 
       if (checkOnePair(playerData["player1"]["scissors"], activeKeys) == true) {
             playerData["player1"]["result"] = "scissors"
-            // alert("Player 1 has chosen Scissors")
-            // return true
       }
 
       if (checkOnePair(playerData["player2"]["rock"], activeKeys) == true) {
             playerData["player2"]["result"] = "rock"
-            // alert("Player 2 has chosen Rock")
-            // return true
       }
 
       if (checkOnePair(playerData["player2"]["paper"], activeKeys) == true) {
             playerData["player2"]["result"] = "paper"
-            // alert("Player 2 has chosen Paper")
-            // return true
       }
 
       if (checkOnePair(playerData["player2"]["scissors"], activeKeys) == true) {
             playerData["player2"]["result"] = "scissors"
-            // alert("Player 2 has chosen Scissors")
-            // return true
       }
-
-      // return false
 
 }
 
-// Actually running the code
+// On key press, run the code
 
-document.onkeypress = function (evt) {
+document.onkeydown = function (evt) {
       evt = evt || window.event;
       var charCode = evt.keyCode || evt.which;
-      var charStr = String.fromCharCode(charCode);
-      activeKeys.push(charStr)
-      var toTest = playerData["player1"]["rock"]
-      // console.log("toTest: " + toTest)
+      var charStr = String.fromCharCode(charCode); // The string of the character
+      charStr = charStr.toLowerCase()
+
+      if (activeKeys.includes(charStr) != true) {
+
+            activeKeys.push(charStr)
+
+      }
+
+      // var toTest = playerData["player1"]["rock"]
       console.log("activeKeys: " + activeKeys)
       checkIfResultWasFound(playerData, activeKeys)
-      // console.log("Result found: " + checkIfResultWasFound(playerData, activeKeys))
 
-      // console.log(playerData)
       console.log(JSON.stringify(playerData, null, 0));
 
       if (playerData["player1"]["result"] != null && playerData["player2"]["result"] != null) {
-            whoWon = winner(playerData["player1"]["result"],playerData["player2"]["result"])
-            alert(whoWon)
+            whoWon = winner(playerData["player1"]["result"], playerData["player2"]["result"])
+            console.log("Winner: " + whoWon)
       }
+
+      console.log("KEYDOWN DETECTED")
+
+};
+
+// Remove keys from active array whenever the key is released
+
+document.onkeyup = function (evt) {
+      evt = evt || window.event;
+      var charCode = evt.keyCode || evt.which;
+      var charStr = String.fromCharCode(charCode);
+      charStr = charStr.toLowerCase()
+
+      var index = activeKeys.indexOf(charStr); // Index of the specific key we want to remove
+
+      if (index > -1) {
+            activeKeys.splice(index, 1);
+      }
+
+      checkIfResultWasFound(playerData, activeKeys)
+
+      console.log("KEYUP DETECTED")
 
 };
 
@@ -179,4 +230,3 @@ if (debug) {
       result = winner(scissors, rock);
       console.log(result);
 }
-
