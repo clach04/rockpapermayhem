@@ -22,278 +22,49 @@
   </head>
 
   <body>
-    <div class="container mt-4">
-  <!-- <div id='big-countdown-timer'>
-    <div style='z-index: 3' id='countdown-timer'>
-      <div class='text-center' style='color: white;'>
-
-      </div>
-    </div>
-    <div id='countdown-text'>
-      <h1 class='mt-5 countdown' style='z-index: 4; font-size: 8em;'><strong>Countdown: <span id='countdown-timer'></span></strong>
-      </h1>
-    </div>
-  </div> -->
-  <h1>Rock Paper Mayhem: Round <span id="round">1</span></h1>
-  <!-- <h1 class='mt-5 countdown' style='z-index: 4; font-size: 8em;'><strong>Countdown: <span id='countdown-timer'></span></strong> -->
-  <!-- </h1> -->
-  <h1 class="countdown" style="font-size: 3em;"><strong>Countdown: <span id="countdown-timer"></span></strong></h1>
-
-  <div class="row">
-    <div class="col-6">
-      <h3>Player 1: <span id="p1-points"></span></h3>
-      <hr>
-      <div class="border">
-        <div class="py-5">
-          <div class="text-center">
-            <img class="w-75" src="giphy.gif">
+    <div class='row'>
+      <div class='col-6'>
+        <h3>Player 1: <span id='p1-points'></span></h3>
+        <hr>
+        <div class='border'>
+          <div class='py-5'>
+            <div class='text-center'>
+              <img class='w-75' src='https://media.giphy.com/media/9PgvV8ale90lQwfQTZ/giphy.gif'>
+            </img>
+          </div>
+          </div>
 
         </div>
-        </div>
-
-      </div>
-      <div class="border rounded-corners pl-4">
-        <div id="p1-rock"><i class="fas fa-hand-rock fa-3x"></i>: <span id="p1-rock-keys">?</span></div>
-        <div id="p1-paper"><i class="fas fa-hand-paper fa-3x"></i>: <span id="p1-paper-keys">?</span></div>
-        <div id="p1-scissor"><i class="fas fa-hand-scissors fa-3x"></i>: <span id="p1-scissor-keys">?</span></div>
-      </div>
-    </div>
-    <div class="col-6">
-      <h3>Player 2: <span id="p2-points"></span></h3>
-      <hr>
-      <div class="border">
-        <div class="py-5">
-          <div class="text-center"><img class="w-75" src="KBQ4c1.gif"></div>
-
+        <div class='border rounded-corners pl-4'>
+          <div id='p1-rock'><i class="fas fa-hand-rock fa-3x"></i>: <span id='p1-rock-keys'>?</span></div>
+          <div id='p1-paper'><i class="fas fa-hand-paper fa-3x"></i>: <span id='p1-paper-keys'>?</span></div>
+          <div id='p1-scissor'><i class="fas fa-hand-scissors fa-3x"></i>: <span id='p1-scissors-keys'>?</span></div>
         </div>
       </div>
-      <div class="border rounded-corners pl-4">
-        <div id="p2-rock"><i class="fas fa-hand-rock fa-3x"></i>: <span id="p2-rock-keys">?</span></div>
-        <div id="p2-paper"><i class="fas fa-hand-paper fa-3x"></i>: <span id="p2-paper-keys">?</span></div>
-        <div id="p2-scissors"><i class="fas fa-hand-scissors fa-3x"></i>: <span id="p2-scissor-keys">?</span></div>
+      <div class='col-6'>
+        <h3>Player 2: <span id='p2-points'></span></h3>
+        <hr>
+        <div class='border'>
+          <div class='py-5'>
+            <div class='text-center'><img class='w-75' src='https://i.makeagif.com/media/1-03-2018/KBQ4c1.gif'></img></div>
+
+          </div>
+        </div>
+        <div class='border rounded-corners pl-4'>
+          <div id='p2-rock'><i class="fas fa-hand-rock fa-3x"></i>: <span id='p2-rock-keys'>?</span></div>
+          <div id='p2-paper'><i class="fas fa-hand-paper fa-3x"></i>: <span id='p2-paper-keys'>?</span></div>
+          <div id='p2-scissors'><i class="fas fa-hand-scissors fa-3x"></i>: <span id='p2-scissors-keys'>?</span></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<script>
-  // Skip to content
-  // Search or jump to…
-  //
-  // Pull requests
-  // Issues
-  // Marketplace
-  // Explore
+  <script>
+    window.onload = function(){
+      countdownTimerQuickAndDirty();
+    }
+  </script>
 
-  // @ryanwaldorf
-  // 3
-  // 00derekpankaew/rockpapermayhem
-  //  Code Issues 0 Pull requests 0 Projects 0 Wiki Security Insights
-  // rockpapermayhem/docs/main.js /
-  // @clach04 clach04 🍰 initial version
-  // 35146be 2 minutes ago
-  // 183 lines (144 sloc)  5.18 KB
-  //
-  // Jump to definition is available!Beta
-  // Navigate your code with ease. In select public repositories, you can now click on function and method calls to jump to their definitions in the same repository. Learn more
-  //
-  //  You're using jump to definition to discover and navigate code.  Beta
-  // Learn more or give us feedback
-
-  const debug = false;
-  //const debug=true;
-  const rock = 'rock';
-  const paper = 'paper';
-  const scissors = 'scissors';
-  const player1 = 'player1';
-  const player2 = 'player2';
-  const draw = 'draw';
-
-  function winner(player1_move, player2_move) {
-        // Result is one of: 'draw', player1, player2
-        switch (player1_move) {
-              case rock:
-                    switch (player2_move) {
-                          case rock: return draw;
-                                break;
-                          case paper: return player2;
-                                break;
-                          case scissors: return player1;
-                                break;
-                    }
-                    break;
-
-              case paper:
-                    switch (player2_move) {
-                          case rock: return player1;
-                                break;
-                          case paper: return draw;
-                                break;
-                          case scissors: return player2;
-                                break;
-                    }
-                    break;
-              case scissors:
-                    switch (player2_move) {
-                          case rock: return player2;
-                                break;
-                          case paper: return player1;
-                                break;
-                          case scissors: return draw;
-                                break;
-                    }
-                    break;
-        }
-  }
-
-  function generate_keys() {
-        // Version 1 :-)
-        var result = {
-              'player1': {
-                    rock: ['b'],
-                    paper: ['n'],
-                    scissors: ['m'],
-                    "result": null
-              },
-              'player2': {
-                    rock: ['1'],
-                    paper: ['2'],
-                    scissors: ['3'],
-                    "result": null
-              }
-        };
-
-        //console.log(result);
-        return result;
-  }
-
-
-  activeKeys = []
-  playerData = generate_keys()
-
-  // Checks one part of "keys that need to be pressed" to "keys that have been pressed"
-  // For example, rock = ["A","B"], keysPressed = ["J","K","5","A"]
-
-  function checkOnePair(arr, keysPressed) {
-
-        console.log("Checking Array: " + arr)
-
-        var allMatchesTrue = true
-
-        // Loop through each key in the "keys that need to be pressed"
-
-        for (i = 0; i < arr.length; i++) {
-
-              // If we find a match, mark allMatchesTrue as true. Skip marking as true if we've already
-              // marked it as false
-
-              if (keysPressed.includes(arr[i]) && allMatchesTrue) {
-                    allMatchesTrue = true
-              }
-
-              else {
-                    allMatchesTrue = false
-              }
-
-        }
-
-        return allMatchesTrue
-  }
-
-  function checkIfResultWasFound(playerData, activeKeys) {
-
-        console.log(playerData)
-
-        if (checkOnePair(playerData["player1"]["rock"], activeKeys) == true) {
-              playerData["player1"]["result"] = "rock"
-              // alert("Player 1 has chosen Rock")
-              // return true
-        }
-
-        if (checkOnePair(playerData["player1"]["paper"], activeKeys) == true) {
-              playerData["player1"]["result"] = "paper"
-              // alert("Player 1 has chosen Paper")
-              // return true
-        }
-
-        if (checkOnePair(playerData["player1"]["scissors"], activeKeys) == true) {
-              playerData["player1"]["result"] = "scissors"
-              // alert("Player 1 has chosen Scissors")
-              // return true
-        }
-
-        if (checkOnePair(playerData["player2"]["rock"], activeKeys) == true) {
-              playerData["player2"]["result"] = "rock"
-              // alert("Player 2 has chosen Rock")
-              // return true
-        }
-
-        if (checkOnePair(playerData["player2"]["paper"], activeKeys) == true) {
-              playerData["player2"]["result"] = "paper"
-              // alert("Player 2 has chosen Paper")
-              // return true
-        }
-
-        if (checkOnePair(playerData["player2"]["scissors"], activeKeys) == true) {
-              playerData["player2"]["result"] = "scissors"
-              // alert("Player 2 has chosen Scissors")
-              // return true
-        }
-
-        // return false
-
-  }
-
-  // Actually running the code
-
-  document.onkeypress = function (evt) {
-        evt = evt || window.event;
-        var charCode = evt.keyCode || evt.which;
-        var charStr = String.fromCharCode(charCode);
-        activeKeys.push(charStr)
-        var toTest = playerData["player1"]["rock"]
-        // console.log("toTest: " + toTest)
-        console.log("activeKeys: " + activeKeys)
-        checkIfResultWasFound(playerData, activeKeys)
-        // console.log("Result found: " + checkIfResultWasFound(playerData, activeKeys))
-
-        // console.log(playerData)
-        console.log(JSON.stringify(playerData, null, 0));
-
-        if (playerData["player1"]["result"] != null && playerData["player2"]["result"] != null) {
-              whoWon = winner(playerData["player1"]["result"],playerData["player2"]["result"])
-              alert(whoWon)
-        }
-
-  };
-
-
-
-  if (debug) {
-        result = generate_keys();
-        console.log(result);
-        console.log(JSON.stringify(result, null, 4));
-
-        result = winner(rock, scissors);
-        result = winner(rock, scissors);
-        console.log(result);
-        result = winner(scissors, rock);
-        console.log(result);
-  }
-
-  // © 2019 GitHub, Inc.
-  // Terms
-  // Privacy
-  // Security
-  // Status
-  // Help
-  // Contact GitHub
-  // Pricing
-  // API
-  // Training
-  // Blog
-  // About
-</script>
 
 
 

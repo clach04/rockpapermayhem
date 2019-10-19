@@ -8,6 +8,18 @@ const player1 = 'player1';
 const player2 = 'player2';
 const draw = 'draw';
 
+
+function countdownTimerQuickAndDirty(){
+  var keys = generate_keys();
+  $("#p1-rock-keys").text(keys['player1']['rock']);
+  $("#p2-rock-keys").text(keys['player2']['rock']);
+  $("#p1-scissors-keys").text(keys['player1']['scissors']);
+  $("#p2-scissors-keys").text(keys['player2']['scissors']);
+  $("#p1-paper-keys").text(keys['player1']['paper']);
+  $("#p2-paper-keys").text(keys['player2']['paper']);
+}
+
+// Calculates who the winner is; returns draw, player 1, player 2
 function winner(player1_move, player2_move) {
       // Result is one of: 'draw', player1, player2
       switch (player1_move) {
@@ -161,6 +173,10 @@ document.onkeydown = function (evt) {
 
 };
 
+document.onload = function(){
+  console.log('test')
+}
+
 // Remove keys from active array whenever the key is released
 
 document.onkeyup = function (evt) {
@@ -194,4 +210,3 @@ if (debug) {
       result = winner(scissors, rock);
       console.log(result);
 }
-
