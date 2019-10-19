@@ -163,6 +163,8 @@ function checkOnePair(arr, keysPressed) {
       return allMatchesTrue
 }
 
+// Checks if a player has made a move
+
 function checkIfResultWasFound(playerData, activeKeys) {
 
       console.log(playerData)
@@ -196,7 +198,9 @@ function checkIfResultWasFound(playerData, activeKeys) {
 
 }
 
-// On key press, run the code
+// On key press
+// Adds the pressed key to activeKeys array
+// Then determines if someone has won or not
 
 document.onkeydown = function (evt) {
       evt = evt || window.event;
@@ -224,25 +228,6 @@ document.onkeydown = function (evt) {
       }
 
 };
-
-// Remove keys from active array whenever the key is released
-
-document.onkeyup = function (evt) {
-      evt = evt || window.event;
-      var charCode = evt.keyCode || evt.which;
-      var charStr = String.fromCharCode(charCode);
-      charStr = charStr.toLowerCase()
-
-      var index = activeKeys.indexOf(charStr); // Index of the specific key we want to remove
-
-      if (index > -1) {
-            activeKeys.splice(index, 1);
-      }
-
-      checkIfResultWasFound(playerData, activeKeys)
-
-};
-
 
 
 if (debug) {
