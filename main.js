@@ -45,30 +45,94 @@ function winner(player1_move, player2_move) {
       }
 }
 
-function generate_keys() {
+// Generates one random character
+
+var potentialKeys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0"]
+
+function randCharacter() {
+
+      // console.log("Potential Keys:")
+      console.log(potentialKeys)
+
+      var index = Math.floor(Math.random() * (potentialKeys.length - 1)) + 0
+
+      // console.log("Index is: " + index)
+
+      result = potentialKeys[index]
+
+      // console.log("Result: " + result)
+
+      potentialKeys.splice(index,1)
+
+      return result
+}
+
+// Returns an array of X length, each element a random character
+
+function generateArrayOfCharacters(length) {
+
+      var result = []
+
+      for (i = 0; i < length; i++) {
+
+            char = randCharacter()
+
+            // console.log("Attempting to add " + char)
+
+            result.push(char)
+
+      }
+
+      return result
+
+}
+
+function generate_keys(numberOfResults) {
+
+      // Reset potential keys, so we can cut them out again as we add characters
+
+      potentialKeys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0"]
+
       // Version 1 :-)
       var result = {
             'player1': {
-                  rock: ['b','g'],
-                  paper: ['n','h'],
-                  scissors: ['m'],
+                  rock: generateArrayOfCharacters(numberOfResults),
+                  paper: generateArrayOfCharacters(numberOfResults),
+                  scissors: generateArrayOfCharacters(numberOfResults),
                   "result": null
             },
             'player2': {
-                  rock: ['1'],
-                  paper: ['2'],
-                  scissors: ['3'],
+                  rock: generateArrayOfCharacters(numberOfResults),
+                  paper: generateArrayOfCharacters(numberOfResults),
+                  scissors: generateArrayOfCharacters(numberOfResults),
                   "result": null
             }
       };
 
-      //console.log(result);
+      console.log("Keys generated:")
+      console.log(result)
+
+      // Make this display on the test page
+
+      document.getElementById("player1rock").innerHTML = String(result["player1"]["rock"])
+      document.getElementById("player1paper").innerHTML = String(result["player1"]["paper"])
+      document.getElementById("player1scissors").innerHTML = String(result["player1"]["scissors"])
+
+      document.getElementById("player2rock").innerHTML = String(result["player2"]["rock"])
+      document.getElementById("player2paper").innerHTML = String(result["player2"]["paper"])
+      document.getElementById("player2scissors").innerHTML = String(result["player2"]["scissors"])
+      
+
       return result;
 }
 
-
 activeKeys = []
-playerData = generate_keys()
+
+window.addEventListener("load", ()=>{
+
+      playerData = generate_keys(2)
+
+})
 
 // Checks one part of "keys that need to be pressed" to "keys that have been pressed"
 // For example, rock = ["A","B"], keysPressed = ["J","K","5","A"]
@@ -140,13 +204,14 @@ document.onkeydown = function (evt) {
       var charStr = String.fromCharCode(charCode); // The string of the character
       charStr = charStr.toLowerCase()
 
+      console.log("Raw key pressed: " + charStr)
+
       if (activeKeys.includes(charStr) != true) {
 
             activeKeys.push(charStr)
 
       }
 
-      // var toTest = playerData["player1"]["rock"]
       console.log("activeKeys: " + activeKeys)
       checkIfResultWasFound(playerData, activeKeys)
 
@@ -155,9 +220,8 @@ document.onkeydown = function (evt) {
       if (playerData["player1"]["result"] != null && playerData["player2"]["result"] != null) {
             whoWon = winner(playerData["player1"]["result"], playerData["player2"]["result"])
             console.log("Winner: " + whoWon)
+            document.getElementById("winner").innerHTML = whoWon
       }
-
-      console.log("KEYDOWN DETECTED")
 
 };
 
@@ -176,8 +240,6 @@ document.onkeyup = function (evt) {
       }
 
       checkIfResultWasFound(playerData, activeKeys)
-
-      console.log("KEYUP DETECTED")
 
 };
 
