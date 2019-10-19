@@ -1,8 +1,9 @@
 
 const debug=false;
+//const debug=true;
 const rock='rock';
 const paper='paper';
-const scissor='scissor';
+const scissors='scissors';
 const player1='player1';
 const player2='player2';
 const draw='draw';
@@ -16,7 +17,7 @@ function winner(player1_move, player2_move) {
                           break;
                     case paper: return player2;
                           break;
-                    case scissor: return player1;
+                    case scissors: return player1;
                           break;
                 }
                 break;
@@ -27,17 +28,17 @@ function winner(player1_move, player2_move) {
                           break;
                     case paper: return draw;
                           break;
-                    case scissor: return player2;
+                    case scissors: return player2;
                           break;
                 }
                 break;
-        case scissor:
+        case scissors:
                 switch (player2_move) {
                     case rock: return player2;
                           break;
                     case paper: return player1;
                           break;
-                    case scissor: return draw;
+                    case scissors: return draw;
                           break;
                 }
                 break;
@@ -50,12 +51,12 @@ function generate_keys() {
         'player1': {
                 rock: ['b'],
                 paper: ['n'],
-                scissor: ['m']
+                scissors: ['m']
         },
         'player2': {
                 rock: ['1'],
                 paper: ['2'],
-                scissor: ['3']
+                scissors: ['3']
         }
     };
 
@@ -68,9 +69,9 @@ if (debug){
     console.log(result);
     console.log(JSON.stringify(result, null, 4));
 
-    result = winner(rock, scissor);
-    result = winner(rock, scissor);
+    result = winner(rock, scissors);
+    result = winner(rock, scissors);
     console.log(result);
-    result = winner(scissor, rock);
+    result = winner(scissors, rock);
     console.log(result);
 }
