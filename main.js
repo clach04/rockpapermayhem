@@ -61,16 +61,11 @@ var potentialKeys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o"
 
 function randCharacter() {
 
-      // console.log("Potential Keys:")
       console.log(potentialKeys)
 
       var index = Math.floor(Math.random() * (potentialKeys.length - 1)) + 0
 
-      // console.log("Index is: " + index)
-
       result = potentialKeys[index]
-
-      // console.log("Result: " + result)
 
       potentialKeys.splice(index,1)
 
@@ -86,8 +81,6 @@ function generateArrayOfCharacters(length) {
       for (i = 0; i < length; i++) {
 
             char = randCharacter()
-
-            // console.log("Attempting to add " + char)
 
             result.push(char)
 
@@ -131,7 +124,6 @@ function generate_keys(numberOfResults) {
       document.getElementById("player2rock").innerHTML = String(result["player2"]["rock"])
       document.getElementById("player2paper").innerHTML = String(result["player2"]["paper"])
       document.getElementById("player2scissors").innerHTML = String(result["player2"]["scissors"])
-      
 
       return result;
 }
