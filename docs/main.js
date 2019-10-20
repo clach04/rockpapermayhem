@@ -248,8 +248,8 @@ function resetGame() {
 
       roundNumber += 1
 
-      $("#p1-score-keys").text(globalPlayerScores[player1]);
-      $("#p2-score-keys").text(globalPlayerScores[player2]);
+      $("#player-1-score").text(playerScores[player1])
+      $("#player-2-score").text(playerScores[player2])
 
       globalPlayerData = generate_keys(numberOfKeysToPress);
       globalPlayerData[player1]["result"] = null
