@@ -16,11 +16,10 @@ var globalPlayerScores = {
 }
 
 var numberOfKeysToPress = 1
-var roundNumber = 0
+var roundNumber = 1
 
 function startNextRound(){
   $("#winnerModal").modal("toggle");
-  resetGame()
 
   countdownTimer();
 }
