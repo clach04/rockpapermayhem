@@ -333,7 +333,6 @@ function checkWinner() {
 
                   globalPlayerScores[player1] += 1
                   p2changeInScore += 1
-                  // var faster = "player1"
 
             }
 
@@ -341,7 +340,6 @@ function checkWinner() {
 
                   globalPlayerScores[player2] += 1
                   p1changeInScore += 1
-                  // var faster = "player2"
 
             }
 
