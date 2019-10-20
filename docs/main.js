@@ -11,6 +11,7 @@ var gameOn = false;
 var globalPlayerData;
 var winnerText;
 var speedText;
+var gameText;
 
 
 var globalPlayerScores = {
@@ -83,32 +84,56 @@ function winner(player1_move, player2_move) {
       switch (player1_move) {
             case rock:
                   switch (player2_move) {
-                        case rock: return draw;
+                        case rock:
+                              gameText = 'Rock fights rock!'
+                              return draw;
                               break;
-                        case paper: return player2;
+                        case paper:
+                              gameText = 'Paper beats rock!'
+                              return player2;
+
+
                               break;
-                        case scissors: return player1;
+                        case scissors:
+                              gameText = 'Rock beats scissors!'
+                              return player1;
                               break;
                   }
                   break;
 
             case paper:
                   switch (player2_move) {
-                        case rock: return player1;
+                        case rock:
+                              gameText = 'Paper beats rock!'
+
+                              return player1;
                               break;
-                        case paper: return draw;
+                        case paper:
+                              gameText = 'Paper fights paper!'
+
+                              return draw;
                               break;
-                        case scissors: return player2;
+                        case scissors:
+                              gameText = 'Scissors beats paper!'
+
+                              return player2;
                               break;
                   }
                   break;
             case scissors:
                   switch (player2_move) {
-                        case rock: return player2;
+                        case rock:
+                              gameText = 'Rock beats scissors!'
+                              return player2;
                               break;
-                        case paper: return player1;
+                        case paper:
+                              gameText = 'Scissors beats paper!'
+                              return player1;
                               break;
-                        case scissors: return draw;
+                        case scissors:
+                              gameText = 'Scissors fights scissors!'
+
+                              return draw;
                               break;
                   }
                   break;
@@ -273,9 +298,10 @@ document.onkeydown = function (evt) {
       }
 };
 
-function setWinnerText(winnerText, speedText){
+function setWinnerText(winnerText, speedText, gameText){
   $("#winnerText").text(winnerText);
   $("#speedText").text(speedText);
+  $("#gameText").text(gameText);
   $("#winnerModal").modal("toggle")
 }
 
@@ -365,7 +391,7 @@ function checkWinner() {
 
             }
 
-            setWinnerText(winnerText, speedText)
+            setWinnerText(winnerText, speedText, gameText)
 
             resetGame()
 
