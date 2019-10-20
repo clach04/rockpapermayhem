@@ -18,6 +18,13 @@ var globalPlayerScores = {
 var numberOfKeysToPress = 1
 var roundNumber = 1
 
+function startNextRound(){
+  $("#winnerModal").modal("toggle");
+  resetGame()
+
+  countdownTimer();
+}
+
 // set keys and start countdown timer; calls display keys to display keys when
 // timer hits 0
 function countdownTimer() {
@@ -37,6 +44,8 @@ function countdownTimer() {
             }, 1000
 
       )
+      // resets timer value so it shows up properly the next time the timer is displayed
+      setTimerValue('Get ready.......')
 }
 
 function setTimerValue(value) {
@@ -248,14 +257,9 @@ function resetGame() {
 
       roundNumber += 1
 
-      $("#p1-score-keys").text(globalPlayerScores[player1]);
-      $("#p2-score-keys").text(globalPlayerScores[player2]);
-
-      globalPlayerData = generate_keys(numberOfKeysToPress);
+      globalPlayerData = generate_keys(roundNumber);
       globalPlayerData[player1]["result"] = null
       globalPlayerData[player2]["result"] = null
-
-      displayKeys(globalPlayerData)
 
       whoWon = null
 }
