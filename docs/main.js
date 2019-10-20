@@ -11,7 +11,7 @@ var gameOn = false;
 var globalPlayerData;
 
 var globalPlayerScores = {
-      "player1": 0,
+      player1: 0,
       player2: 0
 }
 
