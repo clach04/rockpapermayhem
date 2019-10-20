@@ -16,7 +16,7 @@ var globalPlayerScores = {
 }
 
 var numberOfKeysToPress = 1
-var roundNumber = 1
+var roundNumber = 1;
 
 function startNextRound(){
   $("#winnerModal").modal("toggle");
@@ -59,12 +59,12 @@ function clearCounter() {
 
 function displayKeys(keys) {
 
-      $("#p1-rock-keys").text(keys[player1][rock]);
-      $("#p2-rock-keys").text(keys[player2][rock]);
-      $("#p1-scissors-keys").text(keys[player1][scissors]);
-      $("#p2-scissors-keys").text(keys[player2][scissors]);
-      $("#p1-paper-keys").text(keys[player1][paper]);
-      $("#p2-paper-keys").text(keys[player2][paper]);
+      $("#p1-rock-keys").text(keys[player1][rock].join(' '));
+      $("#p2-rock-keys").text(keys[player2][rock].join(' '));
+      $("#p1-scissors-keys").text(keys[player1][scissors].join(' '));
+      $("#p2-scissors-keys").text(keys[player2][scissors].join(' '));
+      $("#p1-paper-keys").text(keys[player1][paper].join(' '));
+      $("#p2-paper-keys").text(keys[player2][paper].join(' '));
 }
 
 function winner(player1_move, player2_move) {
