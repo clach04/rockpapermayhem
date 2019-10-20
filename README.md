@@ -5,8 +5,8 @@ https://stupidhackathon.github.io/
 
 Possibly working version at
 
-  * https://derekpankaew.github.io/rockpapermayhem/
   * https://derekpankaew.github.io/rockpapermayhem/game.htm
+  * https://derekpankaew.github.io/rockpapermayhem/
   * http://thawing-garden-96404.herokuapp.com/
 
 (Optional) Rails server https://github.com/ryanwaldorf/rockpapermayhemrb
