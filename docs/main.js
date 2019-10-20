@@ -17,14 +17,12 @@ var globalPlayerScores = {
 
 var numberOfKeysToPress = 1
 var roundNumber = 1
-var round = 1;
-// FIXME dupe
 
 // set keys and start countdown timer; calls display keys to display keys when
 // timer hits 0
 function countdownTimer() {
   $("#countdownModal").modal("toggle")
-  globalPlayerData = generate_keys(1);
+  globalPlayerData = generate_keys(numberOfKeysToPress);
       var i = 3;
       counter = setInterval(
             function () {
@@ -285,7 +283,7 @@ function checkWinner() {
 
 
 if (debug) {
-      result = generate_keys();
+      result = generate_keys(numberOfKeysToPress);
       // console.log(result);
       // console.log(JSON.stringify(result, null, 4));
 
