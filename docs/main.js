@@ -49,12 +49,12 @@ function clearCounter() {
 
 function displayKeys(keys) {
 
-      $("#p1-rock-keys").text(keys[player1]['rock']);
-      $("#p2-rock-keys").text(keys[player2]['rock']);
-      $("#p1-scissors-keys").text(keys[player1]['scissors']);
-      $("#p2-scissors-keys").text(keys[player2]['scissors']);
-      $("#p1-paper-keys").text(keys[player1]['paper']);
-      $("#p2-paper-keys").text(keys[player2]['paper']);
+      $("#p1-rock-keys").text(keys[player1][rock]);
+      $("#p2-rock-keys").text(keys[player2][rock]);
+      $("#p1-scissors-keys").text(keys[player1][scissors]);
+      $("#p2-scissors-keys").text(keys[player2][scissors]);
+      $("#p1-paper-keys").text(keys[player1][paper]);
+      $("#p2-paper-keys").text(keys[player2][paper]);
 }
 
 function winner(player1_move, player2_move) {
@@ -188,29 +188,29 @@ function checkOnePair(arr, keysPressed) {
 
 function checkIfResultWasFound(playerData, activeKeys) {
 
-      if (checkOnePair(playerData[player1]["rock"], activeKeys) == true) {
-            playerData[player1]["result"] = "rock"
+      if (checkOnePair(playerData[player1][rock], activeKeys) == true) {
+            playerData[player1]["result"] = rock
             console.log('p1rock')
       }
 
-      if (checkOnePair(playerData[player1]["paper"], activeKeys) == true) {
-            playerData[player1]["result"] = "paper"
+      if (checkOnePair(playerData[player1][paper], activeKeys) == true) {
+            playerData[player1]["result"] = paper
       }
 
-      if (checkOnePair(playerData[player1]["scissors"], activeKeys) == true) {
-            playerData[player1]["result"] = "scissors"
+      if (checkOnePair(playerData[player1][scissors], activeKeys) == true) {
+            playerData[player1]["result"] = scissors
       }
 
-      if (checkOnePair(playerData[player2]["rock"], activeKeys) == true) {
-            playerData[player2]["result"] = "rock"
+      if (checkOnePair(playerData[player2][rock], activeKeys) == true) {
+            playerData[player2]["result"] = rock
       }
 
-      if (checkOnePair(playerData[player2]["paper"], activeKeys) == true) {
-            playerData[player2]["result"] = "paper"
+      if (checkOnePair(playerData[player2][paper], activeKeys) == true) {
+            playerData[player2]["result"] = paper
       }
 
-      if (checkOnePair(playerData[player2]["scissors"], activeKeys) == true) {
-            playerData[player2]["result"] = "scissors"
+      if (checkOnePair(playerData[player2][scissors], activeKeys) == true) {
+            playerData[player2]["result"] = scissors
       }
 
       globalPlayerData = playerData;
@@ -272,7 +272,7 @@ function checkWinner() {
             if (whoWon == player2) {
                   globalPlayerScores[player2] += 1
             }
-            if (whoWon != "draw") {
+            if (whoWon != draw) {
                   numberOfKeysToPress += 1
             }
 
