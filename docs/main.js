@@ -12,7 +12,7 @@ var globalPlayerData;
 var winnerText;
 var speedText;
 var gameText;
-const maxRounds = 0;
+const maxRounds = 5;
 
 
 var globalPlayerScores = {
