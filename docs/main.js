@@ -201,33 +201,33 @@ function checkIfResultWasFound(playerData, activeKeys) {
 
       if (checkOnePair(playerData[player1][rock], activeKeys) == true) {
             playerData[player1]["result"] = rock
-            playerData[player1]["time"] = Date.now();
+            if (playerData[player1]["time"] == 0) playerData[player1]["time"] = Date.now();
             console.log('p1rock')
       }
 
       if (checkOnePair(playerData[player1][paper], activeKeys) == true) {
             playerData[player1]["result"] = paper
-            playerData[player1]["time"] = Date.now();
+            if (playerData[player1]["time"] == 0) playerData[player1]["time"] = Date.now();
       }
 
       if (checkOnePair(playerData[player1][scissors], activeKeys) == true) {
             playerData[player1]["result"] = scissors
-            playerData[player1]["time"] = Date.now();
+            if (playerData[player1]["time"] == 0) playerData[player1]["time"] = Date.now();
       }
 
       if (checkOnePair(playerData[player2][rock], activeKeys) == true) {
             playerData[player2]["result"] = rock
-            playerData[player2]["time"] = Date.now();
+            if (playerData[player2]["time"] == 0) playerData[player2]["time"] = Date.now();
       }
 
       if (checkOnePair(playerData[player2][paper], activeKeys) == true) {
             playerData[player2]["result"] = paper
-            playerData[player2]["time"] = Date.now();
+            if (playerData[player2]["time"] == 0) playerData[player2]["time"] = Date.now();
       }
 
       if (checkOnePair(playerData[player2][scissors], activeKeys) == true) {
             playerData[player2]["result"] = scissors
-            playerData[player2]["time"] = Date.now();
+            if (playerData[player2]["time"] == 0) playerData[player2]["time"] = Date.now();
       }
 
       globalPlayerData = playerData;
