@@ -82,7 +82,6 @@
       </h1>
     </div>
   </div> -->
-  <h1>Round <span id='round'>1</span></h1>
   <!-- <h1 class='mt-5 countdown' style='z-index: 4; font-size: 8em;'><strong>Countdown: <span id='countdown-timer'></span></strong> -->
   <!-- </h1> -->
 
@@ -124,12 +123,19 @@
   </div>
 
 <p>
+<img src="rock-paper-scissors.svg" alt="rules; rock beats scissors, scissors beats paper, paper beats rock"/>
+</p>
+<p>
 <i class="far fa-hand-rock"></i>
 Source code available at <a href="https://github.com/derekpankaew/rockpapermayhem">https://github.com/derekpankaew/rockpapermayhem</a>
 </p>
 <p>
 <a href="https://fontawesome.com/license">
 svg hand icons are licensed under the Creative Commons Attribution 4.0 International license
+</a>
+<p>
+<a href="https://commons.wikimedia.org/wiki/File:Rock-paper-scissors.svg">
+Rule infographic licensed under the Creative Commons Attribution-Share Alike 3.0 Unported
 </a>
 </p>
 
@@ -149,14 +155,14 @@ svg hand icons are licensed under the Creative Commons Attribution 4.0 Internati
       </div>
       <div class="modal-footer">
         <button type="button" id="next-round-button" onclick='startNextRound()' class="btn btn-primary">Next Round</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- countdown modal -->
-<div class="modal fade" id="countdownModal" tabindex="-1" role="dialog" aria-labelledby="Get READY" aria-hidden="true">
+<div class="modal fade" id="countdownModal" tabindex="-1" role="dialog" aria-labelledby="Get READY" aria-hidden="true" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body text-center">
