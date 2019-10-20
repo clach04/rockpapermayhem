@@ -12,6 +12,7 @@ var globalPlayerData;
 var winnerText;
 var speedText;
 var gameText;
+const maxRounds = 0;
 
 
 var globalPlayerScores = {
@@ -27,6 +28,7 @@ function toggleInitialModal(){
 }
 
 function startNextRound(){
+
   $("#winnerModal").modal("toggle");
   setRoundNumber(roundNumber)
 
@@ -209,7 +211,7 @@ $(document).unbind("keydown").keyup(function(e){
     }
 });
 
-activeKeys = []
+var activeKeys = []
 
 // Checks one part of "keys that need to be pressed" to "keys that have been pressed"
 // For example, rock = ["A","B"], keysPressed = ["J","K","5","A"]
@@ -302,7 +304,21 @@ function setWinnerText(winnerText, speedText, gameText){
   $("#winnerText").text(winnerText);
   $("#speedText").text(speedText);
   $("#gameText").text(gameText);
-  $("#winnerModal").modal("toggle")
+  if(roundNumber <= maxRounds){
+    $("#winnerModal").modal("toggle")
+  } else {
+    console.log("shouldbecalled")
+    if( globalPlayerScores[player1] > globalPlayerScores[player2] ) {
+      $("#winnerModalWinner").text("Player 1 wins!!!!")
+    } else if(globalPlayerScores[player2] > globalPlayerScores[player1]) {
+      $("#winnerModalWinner").text("Player 2 wins!!!!")
+    } else {
+      $("#winnerModalWinner").text("It's a draw.")
+    }
+    $("#player1_final_score").text(`Player 1 Final Score: ${globalPlayerScores[player1]}`)
+    $("#player2_final_score").text(`Player 2 Final Score: ${globalPlayerScores[player2]}`)
+    $("#finalScoreModal").modal("toggle")
+  }
 }
 
 function setRoundNumber(roundNumber){
@@ -315,6 +331,8 @@ function resetGame() {
 
       roundNumber += 1
       gameOn = false;
+
+      activeKeys = []
 
       // TODO generate_keys()  is called twice (once too many, per round)
       globalPlayerData = generate_keys(numberOfKeysToPress); // do not use round number, in case of draws
