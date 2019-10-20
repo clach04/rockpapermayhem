@@ -49,11 +49,11 @@ function clearCounter() {
 
 function displayKeys(keys) {
 
-      $("#p1-rock-keys").text(keys['player1']['rock']);
+      $("#p1-rock-keys").text(keys[player1]['rock']);
       $("#p2-rock-keys").text(keys['player2']['rock']);
-      $("#p1-scissors-keys").text(keys['player1']['scissors']);
+      $("#p1-scissors-keys").text(keys[player1]['scissors']);
       $("#p2-scissors-keys").text(keys['player2']['scissors']);
-      $("#p1-paper-keys").text(keys['player1']['paper']);
+      $("#p1-paper-keys").text(keys[player1]['paper']);
       $("#p2-paper-keys").text(keys['player2']['paper']);
 }
 
@@ -136,7 +136,7 @@ function generate_keys(numberOfResults) {
 
       // Version 1 :-)
       var result = {
-            'player1': {
+            player1: {
                   rock: generateArrayOfCharacters(numberOfResults),
                   paper: generateArrayOfCharacters(numberOfResults),
                   scissors: generateArrayOfCharacters(numberOfResults),
@@ -188,17 +188,17 @@ function checkOnePair(arr, keysPressed) {
 
 function checkIfResultWasFound(playerData, activeKeys) {
 
-      if (checkOnePair(playerData["player1"]["rock"], activeKeys) == true) {
-            playerData["player1"]["result"] = "rock"
+      if (checkOnePair(playerData[player1]["rock"], activeKeys) == true) {
+            playerData[player1]["result"] = "rock"
             console.log('p1rock')
       }
 
-      if (checkOnePair(playerData["player1"]["paper"], activeKeys) == true) {
-            playerData["player1"]["result"] = "paper"
+      if (checkOnePair(playerData[player1]["paper"], activeKeys) == true) {
+            playerData[player1]["result"] = "paper"
       }
 
-      if (checkOnePair(playerData["player1"]["scissors"], activeKeys) == true) {
-            playerData["player1"]["result"] = "scissors"
+      if (checkOnePair(playerData[player1]["scissors"], activeKeys) == true) {
+            playerData[player1]["result"] = "scissors"
       }
 
       if (checkOnePair(playerData["player2"]["rock"], activeKeys) == true) {
@@ -246,11 +246,11 @@ function resetGame() {
       
       roundNumber += 1
 
-      $("#p1-score-keys").text(globalPlayerScores['player1']);
+      $("#p1-score-keys").text(globalPlayerScores[player1]);
       $("#p2-score-keys").text(globalPlayerScores['player2']);
 
       globalPlayerData = generate_keys(numberOfKeysToPress);
-      globalPlayerData["player1"]["result"] = null
+      globalPlayerData[player1]["result"] = null
       globalPlayerData["player2"]["result"] = null
 
       displayKeys(globalPlayerData)
@@ -261,13 +261,13 @@ function resetGame() {
 function checkWinner() {
       
       console.log(globalPlayerData)
-      if (globalPlayerData["player1"]["result"] != null && globalPlayerData["player2"]["result"] != null) {
-            whoWon = winner(globalPlayerData["player1"]["result"], globalPlayerData["player2"]["result"])
+      if (globalPlayerData[player1]["result"] != null && globalPlayerData["player2"]["result"] != null) {
+            whoWon = winner(globalPlayerData[player1]["result"], globalPlayerData["player2"]["result"])
             console.log("Winner: " + whoWon)
             setWinnerText(whoWon)
 
-            if (whoWon == "player1") {
-                  globalPlayerScores["player1"] += 1
+            if (whoWon == player1) {
+                  globalPlayerScores[player1] += 1
             }
             if (whoWon == "player2") {
                   globalPlayerScores["player2"] += 1
