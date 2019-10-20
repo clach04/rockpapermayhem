@@ -274,7 +274,8 @@ function checkWinner() {
       if (globalPlayerData[player1]["result"] != null && globalPlayerData[player2]["result"] != null) {
             whoWon = winner(globalPlayerData[player1]["result"], globalPlayerData[player2]["result"])
             console.log("Winner: " + whoWon)
-            setWinnerText(whoWon)
+            //setWinnerText(whoWon)
+            setWinnerText(whoWon + ' (' + globalPlayerData[player1]["result"] + ' ' + globalPlayerData[player2]["result"]+ ')')
 
             if (whoWon == player1) {
                   globalPlayerScores[player1] += 1
