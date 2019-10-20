@@ -256,22 +256,16 @@ function setWinnerText(whoWon){
 function resetGame() {
 
       roundNumber += 1
+      gameOn = false;
 
-      globalPlayerData = generate_keys(roundNumber);
-      //$("#player-1-score").text(playerScores[player1])
-      //$("#player-2-score").text(playerScores[player2])
+      globalPlayerData = generate_keys(numberOfKeysToPress); // do not use round number, in case of draws
+      $("#player-1-score").text(globalPlayerScores[player1])
+      $("#player-2-score").text(globalPlayerScores[player2])
 
-      globalPlayerData = generate_keys(numberOfKeysToPress); // FIXME
       globalPlayerData[player1]["result"] = null
       globalPlayerData[player2]["result"] = null
 
       whoWon = null
-}
-
-function setPlayerScoreDisplay(playerScores){
-  console.log(playerScores)
-  $("#player-1-score").text(playerScores[player1])
-  $("#player-2-score").text(playerScores[player2])
 }
 
 function checkWinner() {
@@ -291,9 +285,6 @@ function checkWinner() {
             if (whoWon != draw) {
                   numberOfKeysToPress += 1
             }
-
-            setPlayerScoreDisplay(globalPlayerScores)
-
 
             resetGame()
 
