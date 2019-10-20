@@ -258,6 +258,10 @@ function resetGame() {
       roundNumber += 1
 
       globalPlayerData = generate_keys(roundNumber);
+      //$("#player-1-score").text(playerScores[player1])
+      //$("#player-2-score").text(playerScores[player2])
+
+      globalPlayerData = generate_keys(numberOfKeysToPress); // FIXME
       globalPlayerData[player1]["result"] = null
       globalPlayerData[player2]["result"] = null
 
