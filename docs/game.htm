@@ -120,24 +120,25 @@
         </div>
       </div>
     </div>
+    <div class='more-info'>
+
+      <p>
+      <i class="far fa-hand-rock"></i>
+      Source code available at <a href="https://github.com/derekpankaew/rockpapermayhem">https://github.com/derekpankaew/rockpapermayhem</a>
+      </p>
+      <p>
+      <a href="https://fontawesome.com/license">
+      svg hand icons are licensed under the Creative Commons Attribution 4.0 International license
+      </a>
+      <p>
+      <a href="https://commons.wikimedia.org/wiki/File:Rock-paper-scissors.svg">
+      Rule infographic licensed under the Creative Commons Attribution-Share Alike 3.0 Unported
+      </a>
+      </p>
+    </div>
   </div>
 
-<p>
-<img src="rock-paper-scissors.svg" alt="rules; rock beats scissors, scissors beats paper, paper beats rock"/>
-</p>
-<p>
-<i class="far fa-hand-rock"></i>
-Source code available at <a href="https://github.com/derekpankaew/rockpapermayhem">https://github.com/derekpankaew/rockpapermayhem</a>
-</p>
-<p>
-<a href="https://fontawesome.com/license">
-svg hand icons are licensed under the Creative Commons Attribution 4.0 International license
-</a>
-<p>
-<a href="https://commons.wikimedia.org/wiki/File:Rock-paper-scissors.svg">
-Rule infographic licensed under the Creative Commons Attribution-Share Alike 3.0 Unported
-</a>
-</p>
+
 
 
 <!-- winner modal -->
@@ -173,9 +174,28 @@ Rule infographic licensed under the Creative Commons Attribution-Share Alike 3.0
   </div>
 </div>
 
+<div class="modal fade " id="initialModal" tabindex="-1" role="dialog" aria-labelledby="Welcome to Rock Paper MAYHEM" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class='modal-header'>
+        <h2>Welcome to Rock Paper MAYHEM!!!!</h2>
+      </div>
+      <div class='modal-body'>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="next-round-button" onclick='
+        toggleInitialModal();
+        countdownTimer()' class="btn btn-primary">Start the MAYHEM</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <script>
 window.onload = function(){
-  countdownTimer();
+  toggleInitialModal();
 }
   </script>
 

@@ -10,6 +10,7 @@ var counter;
 var gameOn = false;
 var globalPlayerData;
 
+
 var globalPlayerScores = {
       player1: 0,
       player2: 0
@@ -17,6 +18,10 @@ var globalPlayerScores = {
 
 var numberOfKeysToPress = 1
 var roundNumber = 1;
+
+function toggleInitialModal(){
+  $("#initialModal").modal('toggle')
+}
 
 function startNextRound(){
   $("#winnerModal").modal("toggle");
@@ -171,7 +176,7 @@ function generate_keys(numberOfResults) {
 
 $(document).unbind("keydown").keyup(function(e){
     var code = e.which; // recommended to use e.which, it's normalized across browsers
-    if(code==13)
+    if(code===13 && !$("#winnerModal").hasClass("fade"))
     {
         $("#winnerModal #next-round-button").click();
     }
