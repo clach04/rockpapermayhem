@@ -29,7 +29,8 @@ function startNextRound(){
 // timer hits 0
 function countdownTimer() {
   $("#countdownModal").modal("toggle")
-  globalPlayerData = generate_keys(numberOfKeysToPress);
+      // TODO blank out key display? or leave old ones there?
+  globalPlayerData = generate_keys(numberOfKeysToPress);  // TODO this is called twice (once too many, per round)
       var i = 3;
       counter = setInterval(
             function () {
@@ -258,6 +259,7 @@ function resetGame() {
       roundNumber += 1
       gameOn = false;
 
+      // TODO generate_keys()  is called twice (once too many, per round)
       globalPlayerData = generate_keys(numberOfKeysToPress); // do not use round number, in case of draws
       $("#player-1-score").text(globalPlayerScores[player1])
       $("#player-2-score").text(globalPlayerScores[player2])
