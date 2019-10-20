@@ -242,8 +242,10 @@ function setWinnerText(whoWon){
   $("#winnerModal").modal("toggle")
 }
 
+
+
 function resetGame() {
-      
+
       roundNumber += 1
 
       $("#p1-score-keys").text(globalPlayerScores[player1]);
@@ -258,8 +260,14 @@ function resetGame() {
       whoWon = null
 }
 
+function setPlayerScoreDisplay(playerScores){
+  console.log(playerScores)
+  $("#player-1-score").text(playerScores[player1])
+  $("#player-2-score").text(playerScores[player2])
+}
+
 function checkWinner() {
-      
+
       console.log(globalPlayerData)
       if (globalPlayerData[player1]["result"] != null && globalPlayerData[player2]["result"] != null) {
             whoWon = winner(globalPlayerData[player1]["result"], globalPlayerData[player2]["result"])
@@ -275,6 +283,9 @@ function checkWinner() {
             if (whoWon != draw) {
                   numberOfKeysToPress += 1
             }
+
+            setPlayerScoreDisplay(globalPlayerScores)
+
 
             resetGame()
 
