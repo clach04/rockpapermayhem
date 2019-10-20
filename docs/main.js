@@ -9,6 +9,8 @@ const draw = 'draw';
 var counter;
 var gameOn = false;
 var globalPlayerData;
+var winnerText;
+var speedText;
 
 
 var globalPlayerScores = {
@@ -271,8 +273,9 @@ document.onkeydown = function (evt) {
       }
 };
 
-function setWinnerText(whoWon){
-  $("#winner-name").html(whoWon);
+function setWinnerText(winnerText, speedText){
+  $("#winnerText").text(winnerText);
+  $("#speedText").text(speedText);
   $("#winnerModal").modal("toggle")
 }
 
@@ -326,33 +329,43 @@ function checkWinner() {
                   var symbol = "="
             }
 
+
+
             if (whoWon == player1) {
                   globalPlayerScores[player1] += 1
                   p1changeInScore +=1
+                  winnerText = 'Player 1 gets 1 point for winning!'
             }
             if (whoWon == player2) {
                   globalPlayerScores[player2] += 1
                   p2changeInScore +=1
+                  winnerText = 'Player 2 gets 1 point for winning!'
+            }
+            if(whoWon === draw){
+              winnerText = "It's a draw."
             }
             if (whoWon != draw) {
+
                   numberOfKeysToPress += 1
             }
 
             if (globalPlayerData[player1]["time"] > globalPlayerData[player2]["time"]) {
 
+                  speedText = "Player 2 gets one point for speed!"
                   globalPlayerScores[player2] += 1
                   p2changeInScore += 1
 
             }
 
             else if (globalPlayerData[player2]["time"] > globalPlayerData[player1]["time"]) {
+              speedText = "Player 1 gets one point for speed!"
 
                   globalPlayerScores[player1] += 1
                   p1changeInScore += 1
 
             }
 
-            setWinnerText("Player 1: +" + p1changeInScore + "<br>Player 2: +" + p2changeInScore)
+            setWinnerText(winnerText, speedText)
 
             resetGame()
 
