@@ -57,14 +57,18 @@ function clearCounter() {
       counter = clearInterval(counter);
 }
 
+function format_keys_for_display(key_array) {
+      return '<kbd>' + key_array.join('</kbd> <kbd>') + '</kbd>';
+}
+
 function displayKeys(keys) {
 
-      $("#p1-rock-keys").text(keys[player1][rock].join(' '));
-      $("#p2-rock-keys").text(keys[player2][rock].join(' '));
-      $("#p1-scissors-keys").text(keys[player1][scissors].join(' '));
-      $("#p2-scissors-keys").text(keys[player2][scissors].join(' '));
-      $("#p1-paper-keys").text(keys[player1][paper].join(' '));
-      $("#p2-paper-keys").text(keys[player2][paper].join(' '));
+      $("#p1-rock-keys").html(format_keys_for_display(keys[player1][rock]));
+      $("#p2-rock-keys").html(format_keys_for_display(keys[player2][rock]));
+      $("#p1-scissors-keys").html(format_keys_for_display(keys[player1][scissors]));
+      $("#p2-scissors-keys").html(format_keys_for_display(keys[player2][scissors]));
+      $("#p1-paper-keys").html(format_keys_for_display(keys[player1][paper]));
+      $("#p2-paper-keys").html(format_keys_for_display(keys[player2][paper]));
 }
 
 function winner(player1_move, player2_move) {
