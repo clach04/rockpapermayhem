@@ -256,7 +256,7 @@ document.onkeydown = function (evt) {
 };
 
 function setWinnerText(whoWon){
-  $("#winner-name").text(whoWon);
+  $("#winner-name").html(whoWon);
   $("#winnerModal").modal("toggle")
 }
 
@@ -280,6 +280,9 @@ function resetGame() {
       globalPlayerData[player1]["result"] = null
       globalPlayerData[player2]["result"] = null
 
+      globalPlayerData[player1]["time"] = 0
+      globalPlayerData[player2]["time"] = 0
+
       whoWon = null
 }
 
@@ -291,17 +294,51 @@ function checkWinner() {
             console.log("Winner: " + whoWon)
             console.log("time info: " + globalPlayerData[player1]["time"] + ' ' + globalPlayerData[player2]["time"])
             //setWinnerText(whoWon)
-            setWinnerText(whoWon + ' (' + globalPlayerData[player1]["result"] + ' ' + globalPlayerData[player2]["result"]+ ')')
+
+            var p1changeInScore = 0
+            var p2changeInScore = 0
+
+            if (whoWon == "player1") {
+                  var symbol = ">"
+            }
+
+            if (whoWon == "player2") {
+                  var symbol = "<"
+            }
+
+            if (whoWon == "draw") {
+                  var symbol = "="
+            }
 
             if (whoWon == player1) {
                   globalPlayerScores[player1] += 1
+                  p1changeInScore +=1
             }
             if (whoWon == player2) {
                   globalPlayerScores[player2] += 1
+                  p2changeInScore +=1
             }
             if (whoWon != draw) {
                   numberOfKeysToPress += 1
             }
+
+            if (globalPlayerData[player1]["time"] > globalPlayerData[player2]["time"]) {
+
+                  globalPlayerScores[player1] += 1
+                  p2changeInScore += 1
+                  // var faster = "player1"
+
+            }
+
+            else if (globalPlayerData[player2]["time"] > globalPlayerData[player1]["time"]) {
+
+                  globalPlayerScores[player2] += 1
+                  p1changeInScore += 1
+                  // var faster = "player2"
+
+            }
+
+            setWinnerText("Player 1: +" + p1changeInScore + "<br>Player 2: +" + p2changeInScore)
 
             resetGame()
 
