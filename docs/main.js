@@ -335,14 +335,14 @@ function checkWinner() {
 
             if (globalPlayerData[player1]["time"] > globalPlayerData[player2]["time"]) {
 
-                  globalPlayerScores[player1] += 1
+                  globalPlayerScores[player2] += 1
                   p2changeInScore += 1
 
             }
 
             else if (globalPlayerData[player2]["time"] > globalPlayerData[player1]["time"]) {
 
-                  globalPlayerScores[player2] += 1
+                  globalPlayerScores[player1] += 1
                   p1changeInScore += 1
 
             }
