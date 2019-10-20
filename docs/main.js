@@ -20,6 +20,7 @@ var roundNumber = 1
 
 function startNextRound(){
   $("#winnerModal").modal("toggle");
+  setRoundNumber(roundNumber)
 
   countdownTimer();
 }
@@ -249,6 +250,10 @@ document.onkeydown = function (evt) {
 function setWinnerText(whoWon){
   $("#winner-name").text(whoWon);
   $("#winnerModal").modal("toggle")
+}
+
+function setRoundNumber(roundNumber){
+  $("#round-number").text(roundNumber)
 }
 
 
