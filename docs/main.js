@@ -150,13 +150,15 @@ function generate_keys(numberOfResults) {
                   rock: generateArrayOfCharacters(numberOfResults),
                   paper: generateArrayOfCharacters(numberOfResults),
                   scissors: generateArrayOfCharacters(numberOfResults),
-                  "result": null
+                  "result": null,  // what did player choose? rock, paper, or scissors
+                  "time": 0  // time of choice. Date.now(); number of milliseconds since 1970/01/01
             },
             player2: {
                   rock: generateArrayOfCharacters(numberOfResults),
                   paper: generateArrayOfCharacters(numberOfResults),
                   scissors: generateArrayOfCharacters(numberOfResults),
-                  "result": null
+                  "result": null,
+                  "time": 0
             }
       };
 
@@ -200,27 +202,33 @@ function checkIfResultWasFound(playerData, activeKeys) {
 
       if (checkOnePair(playerData[player1][rock], activeKeys) == true) {
             playerData[player1]["result"] = rock
+            playerData[player1]["time"] = Date.now();
             console.log('p1rock')
       }
 
       if (checkOnePair(playerData[player1][paper], activeKeys) == true) {
             playerData[player1]["result"] = paper
+            playerData[player1]["time"] = Date.now();
       }
 
       if (checkOnePair(playerData[player1][scissors], activeKeys) == true) {
             playerData[player1]["result"] = scissors
+            playerData[player1]["time"] = Date.now();
       }
 
       if (checkOnePair(playerData[player2][rock], activeKeys) == true) {
             playerData[player2]["result"] = rock
+            playerData[player2]["time"] = Date.now();
       }
 
       if (checkOnePair(playerData[player2][paper], activeKeys) == true) {
             playerData[player2]["result"] = paper
+            playerData[player2]["time"] = Date.now();
       }
 
       if (checkOnePair(playerData[player2][scissors], activeKeys) == true) {
             playerData[player2]["result"] = scissors
+            playerData[player2]["time"] = Date.now();
       }
 
       globalPlayerData = playerData;
@@ -281,6 +289,7 @@ function checkWinner() {
       if (globalPlayerData[player1]["result"] != null && globalPlayerData[player2]["result"] != null) {
             whoWon = winner(globalPlayerData[player1]["result"], globalPlayerData[player2]["result"])
             console.log("Winner: " + whoWon)
+            console.log("time info: " + globalPlayerData[player1]["time"] + ' ' + globalPlayerData[player2]["time"])
             //setWinnerText(whoWon)
             setWinnerText(whoWon + ' (' + globalPlayerData[player1]["result"] + ' ' + globalPlayerData[player2]["result"]+ ')')
 
