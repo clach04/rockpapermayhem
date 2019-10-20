@@ -165,6 +165,13 @@ function generate_keys(numberOfResults) {
       return result;
 }
 
+$(document).unbind("keydown").keyup(function(e){
+    var code = e.which; // recommended to use e.which, it's normalized across browsers
+    if(code==13)
+    {
+        $("#winnerModal #next-round-button").click();
+    }
+});
 
 activeKeys = []
 
