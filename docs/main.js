@@ -16,7 +16,7 @@ var globalPlayerScores = {
 }
 
 var numberOfKeysToPress = 1
-var roundNumber = 1
+var roundNumber = 0
 
 function startNextRound(){
   $("#winnerModal").modal("toggle");
@@ -263,6 +263,7 @@ function resetGame() {
       globalPlayerData = generate_keys(numberOfKeysToPress); // do not use round number, in case of draws
       $("#player-1-score").text(globalPlayerScores[player1])
       $("#player-2-score").text(globalPlayerScores[player2])
+      $("#round").text(roundNumber)
 
       globalPlayerData[player1]["result"] = null
       globalPlayerData[player2]["result"] = null
