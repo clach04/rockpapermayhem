@@ -17,11 +17,14 @@ var globalPlayerScores = {
 
 var numberOfKeysToPress = 1
 var roundNumber = 1
+var round = 1;
+// FIXME dupe
 
 // set keys and start countdown timer; calls display keys to display keys when
 // timer hits 0
 function countdownTimer() {
-      globalPlayerData = generate_keys(numberOfKeysToPress);
+  $("#countdownModal").modal("toggle")
+  globalPlayerData = generate_keys(1);
       var i = 3;
       counter = setInterval(
             function () {
@@ -29,6 +32,7 @@ function countdownTimer() {
                   i = i - 1;
                   if (i < 0) {
                         clearCounter();
+        $("#countdownModal").modal("toggle")
                         displayKeys(globalPlayerData);
                         gameOn = true;
                   }
@@ -235,6 +239,11 @@ document.onkeydown = function (evt) {
       }
 };
 
+function setWinnerText(whoWon){
+  $("#winner-name").text(whoWon);
+  $("#winnerModal").modal("toggle")
+}
+
 function resetGame() {
       
       roundNumber += 1
@@ -257,6 +266,7 @@ function checkWinner() {
       if (globalPlayerData["player1"]["result"] != null && globalPlayerData["player2"]["result"] != null) {
             whoWon = winner(globalPlayerData["player1"]["result"], globalPlayerData["player2"]["result"])
             console.log("Winner: " + whoWon)
+            setWinnerText(whoWon)
 
             if (whoWon == "player1") {
                   globalPlayerScores["player1"] += 1

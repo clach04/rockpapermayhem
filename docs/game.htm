@@ -33,6 +33,41 @@
 
   <body>
 
+<div class='container mt-4'>
+  <div style='background-color: black; color: white;' class='py-4 rounded-bottom'>
+    <div class='row'>
+      <div class='col-12 text-center'><h1>Rock Paper MAYHEM</h1></div>
+      <div class='col-2 text-center' style='border-right: 2px solid white;'>
+        <h2 id='player-1-score'>0</h2>
+      </div>
+      <div class='col-8 pt-2'>
+        <div class='row'>
+          <div class='col-2' id='round-1'>
+            <div class='rounded-circle' style='height: 20px; width: 20px; background-color: white;'></div>
+          </div>
+          <div class='col-2' id='round-1'>
+            <div class='rounded-circle' style='height: 20px; width: 20px; background-color: white;'></div>
+          </div>
+          <div class='col-2' id='round-1'>
+            <div class='rounded-circle' style='height: 20px; width: 20px; background-color: white;'></div>
+          </div>
+          <div class='col-2' id='round-1'>
+            <div class='rounded-circle' style='height: 20px; width: 20px; background-color: white;'></div>
+          </div>
+          <div class='col-2' id='round-1'>
+            <div class='rounded-circle' style='height: 20px; width: 20px; background-color: white;'></div>
+          </div>
+          <div class='col-2' id='round-1'>
+            <div class='rounded-circle' style='height: 20px; width: 20px; background-color: white;'></div>
+          </div>
+        </div>
+      </div>
+      <div class='col-2 text-center' style='border-left: 2px solid white;'>
+        <h2 id='player-2-score'>0</h2>
+      </div>
+    </div>
+  </div>
+  <!-- <div id='big-countdown-timer'>
     <div style='z-index: 3' id='countdown-timer'>
       <div class='text-center' style='color: white;'>
 
@@ -43,19 +78,18 @@
       </h1>
     </div>
   </div> -->
-  <h1>Rock Paper Mayhem: Round <span id='round'>1</span></h1>
+  <h1>Round <span id='round'>1</span></h1>
   <!-- <h1 class='mt-5 countdown' style='z-index: 4; font-size: 8em;'><strong>Countdown: <span id='countdown-timer'></span></strong> -->
   <!-- </h1> -->
-  <h1 class='countdown' style='font-size: 3em; color: red;'><strong>Countdown: <span id='countdown-timer-value'>Get ready....</span></strong></h1>
 
     <div class='row'>
       <div class='col-6'>
+      <div class='text-center'>
         <h3>Player 1: <span id='p1-points'></span></h3>
-        <hr>
-        <div class='border'>
-          <div class='py-5'>
+
+        <div class='pb-5'>
             <div class='text-center'>
-              <img class='w-75' src='https://media.giphy.com/media/9PgvV8ale90lQwfQTZ/giphy.gif'>
+            <img class='w-75 rounded-circle' src='https://media.giphy.com/media/9PgvV8ale90lQwfQTZ/giphy.gif'>
             </img>
           </div>
           </div>
@@ -69,11 +103,11 @@
         </div>
       </div>
       <div class='col-6'>
+      <div class='text-center'>
+
         <h3>Player 2: <span id='p2-points'></span></h3>
-        <hr>
-        <div class='border'>
-          <div class='py-5'>
-            <div class='text-center'><img class='w-75' src='https://i.makeagif.com/media/1-03-2018/KBQ4c1.gif'></img></div>
+        <div class='pb-5'>
+          <div class='text-center'><img class='rounded-circle w-75' src='https://i.makeagif.com/media/1-03-2018/KBQ4c1.gif'></img></div>
 
           </div>
         </div>
@@ -97,6 +131,39 @@ svg hand icons are licensed under the Creative Commons Attribution 4.0 Internati
 </a>
 </p>
 
+
+<!-- winner modal -->
+<div class="modal fade" id="winnerModal" tabindex="-1" role="dialog" aria-labelledby="Winner Modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>The winner is.....</h1>
+        <h3>
+          <span id='winner-name'>
+          </span>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- countdown modal -->
+<div class="modal fade" id="countdownModal" tabindex="-1" role="dialog" aria-labelledby="Get READY" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <h1 class='countdown' style='font-size: 3em; color: red;'><strong><span id='countdown-timer-value'>Get ready.....</span></strong></h1>
+
+      </div>
+    </div>
+  </div>
+</div>
 
   <script>
 window.onload = function(){
