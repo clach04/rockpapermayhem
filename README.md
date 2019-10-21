@@ -3,6 +3,8 @@
 https://stupidhackathon.github.io/
 2019-10-19
 
+Learn more in the presentation at https://youtu.be/ah-Yv1n21ds?t=1530
+
 Possibly working version at
 
   * https://derekpankaew.github.io/rockpapermayhem/game.htm
