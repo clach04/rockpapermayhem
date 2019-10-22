@@ -1,5 +1,12 @@
 # rock paper mayhem
 
+Created by:
+
+  * J
+  * [Derek](https://github.com/derekpankaew)
+  * [Ryan](https://github.com/ryanwaldorf)
+  * [Chris](https://github.com/clach04)
+
 https://stupidhackathon.github.io/
 2019-10-19
 
