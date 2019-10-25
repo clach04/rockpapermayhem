@@ -2,7 +2,7 @@
 
 Created by:
 
-  * J
+  * Jayati
   * [Derek](https://github.com/derekpankaew)
   * [Ryan](https://github.com/ryanwaldorf)
   * [Chris](https://github.com/clach04)
